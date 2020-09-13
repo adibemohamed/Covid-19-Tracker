@@ -52,6 +52,7 @@ function App() {
       });
   };
 
+  console.log(countryInfo);
   // map vs forEach : map -> return an object && forEach return nothing
   return (
     <div className="app">
@@ -76,9 +77,21 @@ function App() {
         </div>
 
         <div className="app__stats">
-          <InfoBox title="Coronavirus Cases" cases={2000} total={1233} />
-          <InfoBox title="Recovered" cases={2000} total={3000} />
-          <InfoBox title="Deaths" cases={2000} total={3040} />
+          <InfoBox
+            title="Coronavirus Cases"
+            cases={countryInfo.todayCases}
+            total={countryInfo.cases}
+          />
+          <InfoBox
+            title="Recovered"
+            cases={countryInfo.todayRecovered}
+            total={countryInfo.recovered}
+          />
+          <InfoBox
+            title="Deaths"
+            cases={countryInfo.todayDeaths}
+            total={countryInfo.deaths}
+          />
         </div>
 
         <Map />
