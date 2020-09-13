@@ -16,6 +16,14 @@ function App() {
   const [countryInfo, setCountryInfo] = useState({});
 
   useEffect(() => {
+    fetch("https://disease.sh/v3/covid-19/all")
+      .then((response) => response.json())
+      .then((data) => {
+        setCountryInfo(data);
+      });
+  }, []);
+
+  useEffect(() => {
     // fire on [] ci'
     const getCountriesData = async () => {
       await fetch("https://disease.sh/v3/covid-19/countries")
