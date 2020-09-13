@@ -13,6 +13,7 @@ import Map from "./Map";
 function App() {
   const [countries, setCountries] = useState([""]);
   const [country, setCountry] = useState("worldwide");
+  const [countryInfo, setCountryInfo] = useState({});
 
   useEffect(() => {
     // fire on [] ci'
@@ -32,9 +33,23 @@ function App() {
     getCountriesData();
   }, []);
 
-  const onCountryChange = (event) => {
-    const countrycode = event.target.value;
-    setCountry(countrycode);
+  const onCountryChange = async (event) => {
+    const countryCode = event.target.value;
+    setCountry(countryCode);
+
+    const url =
+      countryCode === "worldwide"
+        ? "https://disease.sh/v3/covid-19/all"
+        : `https://disease.sh/v3/covid-19/countries/${countryCode}`;
+
+    await fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        // All of the data from the country response
+
+        setCountry(countryCode);
+        setCountryInfo(data);
+      });
   };
 
   // map vs forEach : map -> return an object && forEach return nothing
