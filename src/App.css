@@ -6,18 +6,24 @@ body {
   justify-content: space-evenly;
 }
 
+.app__dropdown {
+  background-color: white;
+}
+
 .app__header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 10px 0;
+}
+.app__header > h1 {
+  color: red;
 }
 
 .app__left {
   flex: 0.9;
 }
-.app__right {
-  /* flex: 0.1; */
-}
+
 .app__stats {
   display: flex;
   align-items: center;
