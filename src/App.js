@@ -6,10 +6,10 @@ import {
   MenuItem,
   Card,
   CardContent,
-  Table,
 } from "@material-ui/core";
 import InfoBox from "./InfoBox";
 import Map from "./Map";
+import Table from "./Table";
 
 function App() {
   const [countries, setCountries] = useState([""]);
@@ -17,17 +17,17 @@ function App() {
   const [countryInfo, setCountryInfo] = useState({});
   const [tableData, setTableData] = useState([]);
 
+  // Bring stats of all countries
   useEffect(() => {
     fetch("https://disease.sh/v3/covid-19/all")
       .then((response) => response.json())
       .then((data) => {
-        setTableData(data);
         setCountryInfo(data);
       });
   }, []);
 
+  // Bring stats of all countries
   useEffect(() => {
-    // fire on [] ci'
     const getCountriesData = async () => {
       await fetch("https://disease.sh/v3/covid-19/countries")
         .then((response) => response.json())
@@ -36,7 +36,7 @@ function App() {
             name: country.country,
             value: country.countryInfo.iso2,
           }));
-
+          setTableData(data);
           setCountries(countries);
         });
     };
@@ -63,7 +63,6 @@ function App() {
       });
   };
 
-  console.log(countryInfo);
   // map vs forEach : map -> return an object && forEach return nothing
   return (
     <div className="app">
