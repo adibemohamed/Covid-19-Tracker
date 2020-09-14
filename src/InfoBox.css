@@ -1,3 +1,8 @@
+:root {
+  --black: #513b7b;
+  --green: #51cb20;
+  --red: #dd2130;
+}
 .infoBox {
   flex: 1;
   cursor: pointer;
@@ -7,23 +12,32 @@
   margin-right: 10px;
 }
 
-.infoBox--selected {
-  border-top: 10px solid greenyellow;
+.infoBox--selected-black {
+  border-top: 10px solid var(--black);
 }
 
+.infoBox--selected-red {
+  border-top: 10px solid var(--red);
+}
+
+.infoBox--selected-green {
+  border-top: 10px solid var(--green);
+}
+
+.infoBox--black {
+  color:  var(--black);
+}
+.infoBox--green {
+  color: var(--green);
+}
 .infoBox--red {
-  border-color: red;
-}
-
-.infoBox__cases--green {
-  color: lightgreen !important;
+  color: var(--red);
 }
 
 .infoBox__cases {
-  color: #cc1034;
   font-weight: 600;
-  font-size: 1.75rem;
-  margin-bottom: 0.5rem;
+  font-size: 2.2rem;
+  padding: 8px 0 6px 0;
 }
 
 .infoBox__total {

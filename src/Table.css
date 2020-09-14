@@ -1,18 +1,42 @@
 .table {
   margin-top: 20px;
-  overflow: scroll;
-  height: 400px;
-  color: #6a5d5d;
+  overflow-y: scroll;
+  height: 550px;
+  color: #da3841; 
 }
-.table tr {
-  display: flex;
-  justify-content: space-between;
+table {
+  width: 100%;
+  border-collapse: collapse;
 }
 
-.table td {
-  padding: 0.5rem;
+.table th {
+  font-size: 16px;  
+}
+
+.table table tr {
+  display: flex;   
+}
+
+.table table td,th {
+  padding: 0.3rem;
+  text-align: start;
+  flex: 1; 
+}
+.table table td {
+  font-weight: 600;
+
+  font-size: 14px;
+}
+.table table td img{
+  height: 15px;
+  width: 23px;
+  padding-right: 3px;
+}
+table tr {  
+  text-align: left;
+  padding: 8px;
 }
 
 .table tr:nth-of-type(odd) {
-  background-color: #f3f2f8;
+  background-color: #fff6f6;
 }

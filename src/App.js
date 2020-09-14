@@ -42,11 +42,11 @@ function App() {
           const countries = data.map((country) => ({
             name: country.country,
             value: country.countryInfo.iso2,
-            flag: country.countryInfo.flag
+            flag: country.countryInfo.flag,
           }));
 
           const sortedData = sortData(data);
-
+          
           setTableData(sortedData);
           setCountries(countries);
           setMapCountries(data);
@@ -58,7 +58,6 @@ function App() {
 
   const onCountryChange = async (event) => {
     const countryCode = event.target.value;
-    setCountry(countryCode);
 
     const url =
       countryCode === "worldwide"
@@ -70,9 +69,8 @@ function App() {
       .then((data) => {
         // All of the data from the country response
 
-        setCountryInfo(data);
         setCountry(countryCode);
-
+        setCountryInfo(data);
         setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
         setMapZoom(4);
       });
@@ -82,29 +80,41 @@ function App() {
   return (
     <div className="app">
       <div className="app__left">
-        <div className="app__header">
-          <h1>COVID-19 Tracker</h1>
-          <FormControl className="app__dropdown">
-            <Select
-              variant="outlined"
-              onChange={onCountryChange}
-              value={country}
-            >
-              {/* Loop throught all the countries and show dropdown */}
-              <MenuItem value="worldwide">Worlwide</MenuItem>
-              {countries.map((country) => ( 
+        <Card className="app__card">
+          <CardContent className="app__header">
+          
+            <h1><img alt="" src="./images/virus.png" />Covid-19 <span>Tracker</span></h1>
+            <FormControl className="app__dropdown">
+              <Select
+                variant="outlined"
+                onChange={onCountryChange}
+                value={country}
+              >
+                {/* Loop throught all the countries and show dropdown */}
+
+                <MenuItem value="worldwide">
+                  <div className="app__dropdownTop">
+                    <img alt="" src="./images/earth.png" />
+                    Worldwide
+                  </div>
+                </MenuItem>
+                {countries.map((country) => (
                   <MenuItem value={country.value} key={country.value}>
-                    <div className="app__dropdownItem"><img src={country.flag} />{country.name}</div>
-                  </MenuItem> 
-              ))}
-            </Select>
-          </FormControl>
-        </div>
+                    <div className="app__dropdownItem">
+                      <img alt="" src={country.flag} />
+                      {country.name}
+                    </div>
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </CardContent>
+        </Card>
 
         <div className="app__stats">
           <InfoBox
             onClick={(e) => setCasesType("cases")}
-            isRed
+            color="red"
             active={casesType === "cases"}
             title="Coronavirus Cases"
             cases={prettyPrintStat(countryInfo.todayCases)}
@@ -112,6 +122,7 @@ function App() {
           />
           <InfoBox
             onClick={(e) => setCasesType("recovered")}
+            color="green"
             active={casesType === "recovered"}
             title="Recovered"
             cases={prettyPrintStat(countryInfo.todayRecovered)}
@@ -119,7 +130,7 @@ function App() {
           />
           <InfoBox
             onClick={(e) => setCasesType("deaths")}
-            isRed
+            color="black"
             active={casesType === "deaths"}
             title="Deaths"
             cases={prettyPrintStat(countryInfo.todayDeaths)}
@@ -137,10 +148,10 @@ function App() {
 
       <Card className="app__right">
         <CardContent>
-          <h3>Live Cases by country</h3>
+          <h3 className="app__rightTitleOne">Live Cases by country</h3>
           <Table countries={tableData} />
-          <h3>Worldwide new {casesType}</h3>
-          <LineGraph casesType={casesType} />
+          <h3 className="app__rightTitleTwo">Worldwide new {casesType}</h3>
+          <LineGraph className="app__rightGraph" casesType={casesType} />
         </CardContent>
       </Card>
     </div>

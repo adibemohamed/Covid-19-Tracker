@@ -10,11 +10,55 @@ body {
   background-color: white;
 }
 
+.app__dropdownTop  {
+
+  display: flex;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: bold;
+}
+
+.app__dropdownTop > img { 
+  height: 20px;
+  padding-right: 10px;
+}
+
+.app__dropdownItem {
+  display: flex;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: bold;
+}
+.app__dropdownItem img{
+  height: 20px;
+  width: 35px;
+  padding-right: 10px;
+}
+ 
+
 .app__header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 0;
+  padding: 15px 0; 
+}
+.app__header h1 {
+  display: flex;
+  align-items: center;
+}
+
+.app__header h1 > span {
+  color: black;
+  padding-left: 6px;
+}
+.app__header h1 img {
+  height: 50px;
+  width: 50px;
+  padding-right: 10px;
+}
+
+.app__card {
+  margin: 10px 0 25px 0;
 }
 .app__header > h1 {
   color: red;
@@ -34,5 +78,13 @@ body {
 @media (max-width: 990px) {
   .app {
     flex-direction: column;
+    margin: 0 10px;
   }
+}
+.app__right {
+  margin-top: 10px;
+}
+ 
+.app__rightTitleTwo {
+  padding: 30px 0 20px 0;
 }
