@@ -15,7 +15,9 @@ body {
 .app__left {
   flex: 0.9;
 }
-
+.app__right {
+  /* flex: 0.1; */
+}
 .app__stats {
   display: flex;
   align-items: center;
